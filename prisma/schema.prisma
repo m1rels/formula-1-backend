@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model constructorStandings {
+  id            Int     @id @unique @default(autoincrement())
+  season        String
+  round         String
+  position      String
+  name          String
+  points        String
+  wins          String
+  constructorId String?
+}
+
+model driverStandings {
+  id         Int    @id @unique @default(autoincrement())
+  season     String
+  round      String
+  familyName String
+  givenName  String
+  position   String
+  points     String
+  wins       String
+  driverId   String
+}
+
+model drivers {
+  id          Int    @id @unique @default(autoincrement())
+  driverId    String
+  givenName   String
+  familyName  String
+  dateOfBirth String
+  nationality String
+}
+
+model races {
+  id          Int     @id @unique @default(autoincrement())
+  season      String
+  round       String
+  url         String
+  raceName    String
+  circuitName String
+  date        String  @unique
+  circuitId   String?
+
+  @@unique([season, round])
+}
+
+model seasons {
+  id     Int    @id @unique @default(autoincrement())
+  season String @unique
+  url    String
+}
+
+model teams {
+  id            Int    @id @unique @default(autoincrement())
+  constructorId String
+  name          String
+  nationality   String
+}
+
+model circuits {
+  id          Int    @id @unique @default(autoincrement())
+  circuitId   String
+  circuitName String
+  locality    String
+  country     String
+  url         String
+}
