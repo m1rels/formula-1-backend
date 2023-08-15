@@ -14,7 +14,7 @@ To set up and run the Formula 1 App Backend on your local machine:
 
 1. Clone this repository on your local machine.
 ```bash
-git clone https://github.com/your-username/formula-1-backend.git
+git clone https://github.com/m1rels/formula-1-backend.git
 cd formula-1-backend
 ```
 2. Install the required dependencies.
